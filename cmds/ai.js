@@ -30,7 +30,7 @@ module.exports = {
     onReply: async function ({ reply, api, event }) {
         const { threadID, senderID } = event;
 
-        const followUpApiUrl = `https://ccprojectapis.ddns.net/api/gpt4o?ask=${encodeURIComponent(reply)}&id=${senderID}`;
+        const followUpApiUrl = `https://haji-mix.onrender.com/ai?prompt=${encodeURIComponent(reply)}&uid=${senderID}`;
         api.setMessageReaction("⏱️", event.messageID, () => {}, true);
 
         try {
@@ -60,7 +60,7 @@ module.exports = {
 
                 if (attachment.type === "photo") {
                     const imageURL = attachment.url;
-                    const geminiUrl = `https://ccprojectapis.ddns.net/api/gemini?ask=${encodeURIComponent(target.join(" "))}&imgurl=${encodeURIComponent(imageURL)}`;
+                    const geminiUrl = `https://joshweb.click/gemini?prompt=${encodeURIComponent(target.join(" "))}&url=${encodeURIComponent(imageURL)}`;
 
                     const response = await axios.get(geminiUrl);
                     const vision = convertToBold(response.data.vision);
